@@ -6,7 +6,7 @@ void troca(int& iValor1, int& iValor2);
 
 int& trocaElemento(int iElemento, int arriVetor[]);
 
-void iguals()
+void iguals();
 
 int main(){
     string strNome = "Yuri Saporito";
