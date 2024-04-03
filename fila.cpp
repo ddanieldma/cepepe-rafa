@@ -3,11 +3,11 @@
 
 using namespace std;
 
-// filas 
-// estruturas FIFO, ou FCFS (First Come, First Served)
+// Filas 
+// Estruturas FIFO, ou FCFS (First Come, First Served).
 
-// pilhas
-// esturas LIFO, LCFS (Last Come, First Served)
+// Pilhas
+// Esturas LIFO, LCFS (Last Come, First Served).
 
 typedef struct Node{
     int iData;
@@ -21,9 +21,10 @@ typedef struct Queue
 } Queue;
 
 Queue* newQueue(){
-    // precisamos pedir memoria para o SO
+    // Precisamos pedir memoria para o SO.
     Queue* temp = (Queue*) malloc(sizeof(Queue));
 
+    // Fila vazia: primeiro e último elementos nulos.
     temp->front = nullptr;
     temp->rear = nullptr;
 
@@ -40,13 +41,18 @@ Node* newNode(int iValue){
 }
 
 void enQueue(Queue* const queue, int iValue){
-    // adiciona elemento na fila
+    // Adiciona elemento na fila.
+
+    // Cria novo nó
     Node* temp = newNode(iValue);
 
+    // Se a fila estiver vazia...
     if (queue -> rear == nullptr){
+        // ...primeiro e último elemento são iguais.
         queue->front = temp;
         queue->rear = temp;
     }
+    // Senão, adiciona elemento no final.
     else{
         queue->rear->next = temp;
         queue->rear = temp;
@@ -54,15 +60,31 @@ void enQueue(Queue* const queue, int iValue){
 }
 
 void deQueue(Queue* const queue){
-    // remove elemento da fila
+    // Remove elemento da fila.
+
+    // Se a fila estiver vazia.
     if (queue -> front == nullptr){
         cout << "fila vazia" << endl;
         return;
     }
 
-    Node* current = queue->front;
+    // No inicio reservamos o endereço do elemento que vamos apagar para
+    // que no final uma única variável saiba o endereço dele e possamos
+    // deletá-lo da memória.
+    Node* temp = queue->front;
 
-    cout << "Elemento " << current->iData << " removido." << endl;
+    cout << "Elemento " << temp->iData << " removido." << endl;
+
+    // Transforma o next do primeiro elemento no novo primeiro elemento.
+    queue->front = queue->front->next;
+
+    if (queue->front == nullptr){
+        // fila vazia
+        queue->rear = nullptr
+    }
+
+    // libera memória alocada o que era o primeiro elemento.
+    free(temp);
 }
 
 void showFirstElement(Queue* const queue){
@@ -74,7 +96,9 @@ void showLastElement(Queue* const queue){
 }
 
 void showElements(Queue* const queue){
-    // percorre toda a fila exibindo seu elementos
+    // Percorre toda a fila exibindo seu elementos.
+
+    //Fila vazia.
     if (queue->front == nullptr){
         cout << "Fila vazia" << endl;
         return;
@@ -132,6 +156,8 @@ int main(){
 
     deQueue(queue);
     deQueue(queue2);
+
+    iguais();
 
     return 0;
 }
