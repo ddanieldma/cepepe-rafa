@@ -39,8 +39,8 @@ Node* newNode(int iValue){
     return temp;
 }
 
-// aumentando a fila
 void enQueue(Queue* const queue, int iValue){
+    // adiciona elemento na fila
     Node* temp = newNode(iValue);
 
     if (queue -> rear == nullptr){
@@ -53,6 +53,18 @@ void enQueue(Queue* const queue, int iValue){
     }
 }
 
+void deQueue(Queue* const queue){
+    // remove elemento da fila
+    if (queue -> front == nullptr){
+        cout << "fila vazia" << endl;
+        return;
+    }
+
+    Node* current = queue->front;
+
+    cout << "Elemento " << current->iData << " removido." << endl;
+}
+
 void showFirstElement(Queue* const queue){
     cout << "Primeiro elmento da fila: " << ((queue->front != NULL) ? queue->front->iData : -1) << endl;
 }
@@ -62,6 +74,7 @@ void showLastElement(Queue* const queue){
 }
 
 void showElements(Queue* const queue){
+    // percorre toda a fila exibindo seu elementos
     if (queue->front == nullptr){
         cout << "Fila vazia" << endl;
         return;
@@ -85,6 +98,7 @@ int main(){
     //5. Função que enfileira um nó
     //6. Função que exibe primeiro elemento
     //7. Função que exibe último elemento
+    //8. Função que remove um nó
 
     Queue* queue = newQueue();
     showFirstElement(queue);
@@ -113,6 +127,11 @@ int main(){
     showElements(queue);
 
     iguais();
+
+    Queue* queue2 = newQueue();
+
+    deQueue(queue);
+    deQueue(queue2);
 
     return 0;
 }
