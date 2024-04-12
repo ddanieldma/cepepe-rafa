@@ -15,6 +15,59 @@ typedef struct LinkedList
 	int iSize;
 } LinkedList;
 
+
+LinkedList* newLinkedList();
+Node* newNode(int);
+void enLinkedList(LinkedList* const, int);
+void deLinkedList(LinkedList* const, int);
+void showElement(LinkedList* const, int);
+void showElements(LinkedList* const);
+
+
+int main(){
+	//1. Estrutura de um nó
+    //2. Estrutura de uma lista encadeada
+    //4. Função que cria uma lista encadeada
+    //3. Função que cria um nó
+    //5. Função que enfileira um nó
+    //6. Função que exibe elemento pelo índice na lista
+    //7. Função que exibe todos os elementos
+    //8. Função que remove um nó pelo dado nele contido
+
+	LinkedList* linkedlist = newLinkedList();
+	
+	enLinkedList(linkedlist, 7);
+	enLinkedList(linkedlist, 13);
+	enLinkedList(linkedlist, 42);
+	enLinkedList(linkedlist, 666);
+	enLinkedList(linkedlist, 1024);
+
+	iguais();
+	cout << "Tamanho da lista: " << linkedlist->iSize << endl;
+
+	iguais();
+	cout << "Primeiro elemento da lista" << endl;
+	showElement(linkedlist, 0);
+	cout << "Segundo elemento da lista" << endl;
+	showElement(linkedlist, 1);
+	cout << "Último elemento da lista" << endl;
+	showElement(linkedlist, linkedlist->iSize - 1);
+
+	iguais();
+	cout << "Todos os elementos" << endl;
+	showElements(linkedlist);
+
+	iguais();
+	cout << "Removendo elemento da lista" << endl;
+	deLinkedList(linkedlist, 666);
+	showElements(linkedlist);
+	cout << "Tamanho da lista: " << linkedlist->iSize << endl;
+	deLinkedList(linkedlist, 1);
+
+
+    return 0;
+}
+
 LinkedList* newLinkedList(){
     // Precisamos pedir memoria para o SO.
     LinkedList* temp = (LinkedList*) malloc(sizeof(LinkedList));
@@ -122,7 +175,6 @@ void deLinkedList(LinkedList* const linkedlist, int iValue){
 	return;
 }
 
-
 void showElements(LinkedList* const linkedlist){
     // Percorre toda a fila exibindo seu elementos.
 
@@ -140,48 +192,4 @@ void showElements(LinkedList* const linkedlist){
         current = current->next;
         iCounter++;
     }
-}
-
-int main(){
-	//1. Estrutura de um nó
-    //2. Estrutura de uma lista encadeada
-    //4. Função que cria uma lista encadeada
-    //3. Função que cria um nó
-    //5. Função que enfileira um nó
-    //6. Função que exibe elemento pelo índice na lista
-    //7. Função que exibe todos os elementos
-    //8. Função que remove um nó pelo dado nele contido
-
-	LinkedList* linkedlist = newLinkedList();
-	
-	enLinkedList(linkedlist, 7);
-	enLinkedList(linkedlist, 13);
-	enLinkedList(linkedlist, 42);
-	enLinkedList(linkedlist, 666);
-	enLinkedList(linkedlist, 1024);
-
-	iguais();
-	cout << "Tamanho da lista: " << linkedlist->iSize << endl;
-
-	iguais();
-	cout << "Primeiro elemento da lista" << endl;
-	showElement(linkedlist, 0);
-	cout << "Segundo elemento da lista" << endl;
-	showElement(linkedlist, 1);
-	cout << "Último elemento da lista" << endl;
-	showElement(linkedlist, linkedlist->iSize - 1);
-
-	iguais();
-	cout << "Todos os elementos" << endl;
-	showElements(linkedlist);
-
-	iguais();
-	cout << "Removendo elemento da lista" << endl;
-	deLinkedList(linkedlist, 666);
-	showElements(linkedlist);
-	cout << "Tamanho da lista: " << linkedlist->iSize << endl;
-	deLinkedList(linkedlist, 1);
-
-
-    return 0;
 }
