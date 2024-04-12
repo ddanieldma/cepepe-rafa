@@ -15,7 +15,7 @@ typedef struct Node
     Node* ptrNext;
 } Node;
 
-typedef struct linkedList
+typedef struct LinkedList
 {
 	Node* first;
 }LinkedList;
@@ -37,11 +37,21 @@ LinkedList* createLinkedList(){
 	return temp;
 }
 
+int emptyList(LinkedList* const linkedlist){
+
+	if(linkedlist->first == nullptr){
+		cout << "Lista vazia" << endl;
+		return true;
+	}
+
+	return false;
+}
+
 void addElement(LinkedList* const linkedlist, int iValue){
 	Node* newElement = createNode(iValue);
 
 	// Se a lista estiver vazia.
-	if(linkedlist->first == nullptr){
+	if(emptyList(linkedlist)){
 		linkedlist->first = newElement;
 
 		return;
@@ -59,8 +69,8 @@ void addElement(LinkedList* const linkedlist, int iValue){
 }
 
 void removeElement(LinkedList* linkedlist, int iValue){
-	if(linkedlist->first == nullptr){
-		cout << "Lista vazia" << endl;
+	if(emptyList(linkedlist)){
+		return;
 	}
 
 	if(linkedlist->first->iData == iValue){
@@ -96,9 +106,7 @@ void removeElement(LinkedList* linkedlist, int iValue){
 }
 
 void showElements(LinkedList* const linkedlist){
-	if(linkedlist-> first == nullptr){
-		cout << "Lista vazia" << endl;
-
+	if(emptyList(linkedlist)){
 		return ;
 	}
 	
@@ -115,11 +123,15 @@ void showElements(LinkedList* const linkedlist){
 	return;
 }
 
-int emptyList(LinkedList* const linkedlist){
-
-	if(linkedlist->first == nullptr){
-		return true;
+void addElementFront(LinkedList* const linkedlist, int iValue){
+	Node* newNode = createNode(iValue);
+	
+	// Se a lista não estiver vazia o primeiro elemento se torna o segundo.
+	if(!(emptyList(linkedlist))){
+		newNode->ptrNext = linkedlist->first;	
 	}
 
-	return false;
+	linkedlist->first = newNode;
+
+	return;
 }
