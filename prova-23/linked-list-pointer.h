@@ -80,6 +80,25 @@ int isOnListPointer(LinkedListPointer* linkedlist, void* address){
 	return false;
 }
 
+// Outra boa estratégia, tanto para encontrar quanto para deletar um nó.
+NodePointer* findNode(LinkedListPointer* linkedlist, void* address){
+	if(linkedlist->first == nullptr){
+		cout << "Lista vazia" << endl;
+	}
+	
+	NodePointer* current = linkedlist->first;
+
+	while(current != nullptr){
+		if(current->address == address){
+			return current;
+		}
+
+		current = current->ptrNext;
+	}
+
+	cout << "Elemento não encontrado" << endl;
+}
+
 // void removeElement(LinkedList* linkedlist, int iValue){
 // 	if(linkedlist->first == nullptr){
 // 		cout << "Lista vazia" << endl;

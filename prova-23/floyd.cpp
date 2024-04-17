@@ -20,11 +20,12 @@ int main(){
 	addElement(linkedlist, 4);
 	addElement(linkedlist, 5);
 
-	linkedlist->first->ptrNext->ptrNext->ptrNext->ptrNext->ptrNext = linkedlist->first->ptrNext->ptrNext;
+	linkedlist->first->ptrNext->ptrNext->ptrNext->ptrNext->ptrNext = linkedlist->first->ptrNext;
 
 	iguais();
 
-	floydMethod(linkedlist);
+	int iSizeLoop = floydMethod(linkedlist);
+	cout << "Tamanho do loop: " << iSizeLoop << endl;
 
 	LinkedList* otherList = createLinkedList();
 
@@ -37,7 +38,8 @@ int main(){
 	LinkedList* thirdList = createLinkedList();
 	addElement(thirdList, 13);
 
-	floydMethod(thirdList);
+	iSizeLoop = floydMethod(thirdList);
+	cout << "Tamanho do loop: " << iSizeLoop << endl;
 	
 	return 0;
 }
@@ -49,13 +51,24 @@ int floydMethod(LinkedList* const linkedlist){
 	}
 
 	Node* tartaruga = linkedlist->first;
-	Node* lebre = linkedlist->first;
+	Node* lebre = linkedlist->first->ptrNext;
 
 	while(lebre != nullptr && lebre->ptrNext != nullptr){
 		if(tartaruga == lebre){
+			// Agora, para contar o tamanho do loop, paramos a lebre e per-
+			// corremos o loop uma última vez com a tartaruga para descobrir
+			// o tamanho do loop
+			int iCounter = 1;
+			tartaruga = tartaruga->ptrNext;
+
 			cout << "Há um loop" << endl;
 
-			return true;
+			while(tartaruga != lebre){
+				tartaruga = tartaruga->ptrNext;
+				iCounter = iCounter + 1;
+			}
+
+			return iCounter;
 		}
 		
 		tartaruga = tartaruga->ptrNext;
@@ -67,5 +80,5 @@ int floydMethod(LinkedList* const linkedlist){
 
 	cout << "Não há um loop" << endl;
 
-	return false;
+	return 0;
 }

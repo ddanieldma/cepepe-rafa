@@ -44,7 +44,9 @@ int main (){
 	isOnList(otherList, 6);
 	isOnList(otherList, 3);
 
-	hasLoop(linkedlist);
+	int iSizeLoop = hasLoop(linkedlist);
+
+	cout << "Tamanho do loop: " << iSizeLoop << endl;
 
 	return 0;
 }
@@ -80,13 +82,26 @@ int hasLoop(LinkedList* const linkedlist){
 	while(current != nullptr){
 		// se o endereço estiver na lista de endereços
 		if(isOnListPointer(addressList, current)){
-			cout << "Tem um loop";
-			return true;
+			// Se o endereço já estiver na lista, percorremos a lista
+			// uma útlima vez a partir do endereço do começo do loop
+			// para contar quantos endereços há depois do
+			// começo do loop, ou seja, qual o tamanho do loop.
+			cout << "Tem um loop" << endl;
+
+			int iCounter = 0;
+			NodePointer* currentAddress = findNode(addressList, current);
+
+			while(currentAddress != nullptr){
+				currentAddress = currentAddress->ptrNext;
+				iCounter++;
+			}
+
+			return iCounter;
 		}
 		addElementPointer(addressList, current);
 		current = current->ptrNext;
 	}
 
-	cout << "Não tem um loop";
-	return false;
+	cout << "Não tem um loop" << endl;
+	return 0;
 }
