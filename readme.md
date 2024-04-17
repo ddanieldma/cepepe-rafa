@@ -1,0 +1,4 @@
+## Column major e row major
+Duas formas diferentes de armazenar valores na memória. Os valores de uma matriz (array bidimensional) são sempre armazenados sequencialmente na memória. Quando acessamos, por exemplo, ```arr[1][1]``` estamos apenas somando o tamanho do tipo vezes o suficiente para chegar na posição de memória que armazena o valor guardado por ```arr[1][1]```.
+- Column major: os valores da matriz são armazenados de cima para baixo, da esquerda pra direita. Ou seja, para acessarmos os valrores de forma sequencial (mais eficiente) precisamos iterar por todas as linhas de uma coluna e depois mudar de coluna.
+- Row major: os valores da matriz são armazenados da esquerda pra direita de cima para baixo (preste atenção à ordem). O acesso sequencial deve ser feito iterando por todas as colunas de uma linha e depois mudando a linha.
