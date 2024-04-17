@@ -1,13 +1,16 @@
 #include <iostream>
 
-using namespace std;
+using std::cout;
+using std::endl;
+
 
 void iguals();
+
 
 int main(){
     enum Streaming {AppleTv, AmazonPrime, CrunchyRoll, DisneyPlus, NetFlix, Max};
 
-    Streaming streamingSubscription = CrunchyRoll;
+    Streaming streamingSubscription = AppleTv;
 
     switch (streamingSubscription){
         case AppleTv:
@@ -24,17 +27,23 @@ int main(){
     
     iguals();
 
-    enum Mes {JANEIRO = 10, FEVEREIRO, MARCO, ABRIL, MAIO};
+    enum Mes {JANEIRO, FEVEREIRO = 10, MARCO, ABRIL, MAIO};
 
-    Mes mesProvas = MAIO;
-    cout << mesProvas << endl;
+    Mes mesProvas = JANEIRO;
+    cout << "Janeiro: " << mesProvas << endl;
+    mesProvas = MAIO;
+    cout << "Maio: " << mesProvas << endl;
 
     // ta incompleto
-    enum Semana {Segunda, Terca, Quarta, Quinta, Sexta, Sabado, Domingo};
+    enum Semana {Segunda = 10, Terca = 1, Quarta = -3};
+
+    Semana diaPalestra = Quarta;
+    cout << diaPalestra << endl;
 
     return 0;
 }
 
+
 void iguals(){
-    cout << "==============================================" << endl;
+    cout << "==============================================================" << endl;
 }

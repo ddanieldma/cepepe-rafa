@@ -85,7 +85,7 @@ int main(){
     livro3.iPublicacao = 1949;
 
     Biblioteca biblioteca;
-    biblioteca.strNome = "Oi";
+    biblioteca.strNome = "BMHS";
     biblioteca.iTamAcervo = 0;
 
     biblioteca.livros[0] = livro1;
@@ -95,6 +95,7 @@ int main(){
     biblioteca.livros[2] = livro3;
     biblioteca.iTamAcervo += 1;
 
+    listaLivros(biblioteca);
 
     return 0;
 }
