@@ -1,5 +1,5 @@
 // Não tem um jeito bom de retornar um array e iterar por ele em c++ sem
-// o uso de estruturas específicas, como o std::vector ou std:array;
+// o uso de estruturas específicas, como o std::vector ou std:array;ggg
 
 #include <iostream>
 
