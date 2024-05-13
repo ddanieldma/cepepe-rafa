@@ -27,24 +27,24 @@ int main(){
     Node* head = createList(100);
     displayList(head);
     
-    // int arriNumbers[] = {42, 7, 0, 3, 666, 1, 11, 10, 13};
-    // int iLength = sizeof(arriNumbers)/sizeof(arriNumbers[0]);
+    int arriNumbers[] = {42, 7, 0, 3, 666, 1, 11, 10, 13};
+    int iLength = sizeof(arriNumbers)/sizeof(arriNumbers[0]);
 
-    // cout << "Array original: " << endl;
-    // printArray(arriNumbers, iLength);
-    // iguals();
+    cout << "Array original: " << endl;
+    printArray(arriNumbers, iLength);
+    iguals();
 
-    // // Há um pequeno erro nesse clock, que se torna irrelevante com execuções para
-    // // arrays muito grandes;
-    // auto timeStart = high_resolution_clock::now();
-    // bubbleSort(arriNumbers, iLength);
-    // auto timeStop = high_resolution_clock::now();
+    // Há um pequeno erro nesse clock, que se torna irrelevante com execuções para
+    // arrays muito grandes;
+    auto timeStart = high_resolution_clock::now();
+    bubbleSort(arriNumbers, iLength);
+    auto timeStop = high_resolution_clock::now();
 
-    // cout << "Array ordenado: " << endl;
-    // printArray(arriNumbers, iLength);
+    cout << "Array ordenado: " << endl;
+    printArray(arriNumbers, iLength);
 
-    // auto timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
-    // cout << "Tempo utilizado: " << timeDuration.count() << " nanosegundos" << endl;
+    auto timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
+    cout << "Tempo utilizado: " << timeDuration.count() << " nanosegundos" << endl;
 
     return 0;
 }
@@ -107,9 +107,3 @@ Node* createList(int iNumElements){
     
     return head;
 }
-
-// Trabalho para casa: implementar com uma lista.
-// Medir o desempenho do algoritmo: rodar o bubblesort normal
-// e o otimizado: criar lista com muitos elementos, rodar os dois
-// algoritmos, salvar a duração da execução, esvaziar a lista e repetir.
-// Aplicar estatística descritiva nos resultados.

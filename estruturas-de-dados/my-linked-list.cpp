@@ -3,6 +3,9 @@
 
 using namespace std;
 
+
+// Implementação de estrutura de lista encadeada que armazena o primeiro elemento,
+// o último elemento e o tamanho da lista.
 typedef struct Node{
     int iData;
     struct Node* next;

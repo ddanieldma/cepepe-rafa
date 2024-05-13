@@ -20,6 +20,34 @@ typedef struct linkedList
 	Node* first;
 }LinkedList;
 
+
+int main(){
+	// 1. estruturas
+	// 2. função que cria no e lista
+	// 3. adicionar elemento
+	// 4. remover elemento
+	// 5. mostrar primeiro, ultimo e todos
+	
+	LinkedList* linkedlist = createLinkedList();
+
+	showElements(linkedlist);
+
+	addElement(linkedlist, 1);
+	addElement(linkedlist, 3);
+	addElement(linkedlist, 2);
+	addElement(linkedlist, 4);
+
+	showElements(linkedlist);
+
+	removeElement(linkedlist, 1);
+	removeElement(linkedlist, 2);
+	
+	showElements(linkedlist);
+
+	return 0;
+}
+
+
 Node* createNode(int iValue){
 	Node* temp = (Node*) malloc(sizeof(Node));
 	
@@ -113,31 +141,4 @@ void showElements(LinkedList* const linkedlist){
 	}
 	
 	return;
-}
-
-int main(){
-	// 1. estruturas
-	// 2. função que cria no e lista
-	// 3. adicionar elemento
-	// 4. remover elemento
-	
-	// 5. mostrar primeiro, ultimo e todos
-	
-	LinkedList* linkedlist = createLinkedList();
-
-	showElements(linkedlist);
-
-	addElement(linkedlist, 1);
-	addElement(linkedlist, 3);
-	addElement(linkedlist, 2);
-	addElement(linkedlist, 4);
-
-	showElements(linkedlist);
-
-	removeElement(linkedlist, 1);
-	removeElement(linkedlist, 2);
-	
-	showElements(linkedlist);
-
-	return 0;
 }
