@@ -1,7 +1,3 @@
-// 1. Lista aponta só para o primeiro elemento
-// 2. Adiciona no final
-// 3. Não tem tamanho
-
 #include <iostream>
 
 using std::cin;
